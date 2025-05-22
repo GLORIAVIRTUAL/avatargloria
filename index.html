@@ -3,46 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Embed Heygen</title>
+  <title>Embed Heygen Fullscreen</title>
 </head>
-<body>
-  <!-- Seu conteúdo da página aqui -->
+<body style="margin: 0; padding: 0;">
 
-  <!-- Embed do Heygen -->
   <script>
     !function(window){
-      const host="https://labs.heygen.com",
-      url=host+"/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJLYXR5YV9Qcm9mZXNzaW9uYWxMb29rMl9w%0D%0AdWJsaWMiLCJwcmV2aWV3SW1nIjoiaHR0cHM6Ly9maWxlczIuaGV5Z2VuLmFpL2F2YXRhci92My9k%0D%0ANTJmZmExYjQ0N2Q0ZjJmOGViMTY5MTdlN2VjMjIyYV81NTg3MC9wcmV2aWV3X3RhbGtfMS53ZWJw%0D%0AIiwibmVlZFJlbW92ZUJhY2tncm91bmQiOnRydWUsImtub3dsZWRnZUJhc2VJZCI6IjUxMmQwMDAy%0D%0AN2Q0NzRiMmM5MjljMzhkYWFmZjZlYmZjIiwidXNlcm5hbWUiOiJiZjJkOWEyOTk2MzE0MGE5YWIx%0D%0ANmIzMDM2ODRhZWM2ZCJ9&inIFrame=1",
-      clientWidth=document.body.clientWidth,
-      wrapDiv=document.createElement("div");
-      wrapDiv.id="heygen-streaming-embed";
-      const container=document.createElement("div");
-      container.id="heygen-streaming-container";
-      const stylesheet=document.createElement("style");
-      stylesheet.innerHTML=`
+      const host = "https://labs.heygen.com",
+      url = host + "/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJLYXR5YV9Qcm9mZXNzaW9uYWxMb29rMl9w%0D%0AdWJsaWMiLCJwcmV2aWV3SW1nIjoiaHR0cHM6Ly9maWxlczIuaGV5Z2VuLmFpL2F2YXRhci92My9k%0D%0ANTJmZmExYjQ0N2Q0ZjJmOGViMTY5MTdlN2VjMjIyYV81NTg3MC9wcmV2aWV3X3RhbGtfMS53ZWJw%0D%0AIiwibmVlZFJlbW92ZUJhY2tncm91bmQiOnRydWUsImtub3dsZWRnZUJhc2VJZCI6IjUxMmQwMDAy%0D%0AN2Q0NzRiMmM5MjljMzhkYWFmZjZlYmZjIiwidXNlcm5hbWUiOiJiZjJkOWEyOTk2MzE0MGE5YWIx%0D%0ANmIzMDM2ODRhZWM2ZCJ9&inIFrame=1",
+      wrapDiv = document.createElement("div");
+      
+      wrapDiv.id = "heygen-streaming-embed";
+
+      const container = document.createElement("div");
+      container.id = "heygen-streaming-container";
+
+      const stylesheet = document.createElement("style");
+      stylesheet.innerHTML = `
+        html, body {
+          margin: 0;
+          padding: 0;
+          height: 100%;
+          overflow: hidden;
+        }
         #heygen-streaming-embed {
           z-index: 9999;
           position: fixed;
-          left: 40px;
-          bottom: 40px;
-          width: 200px;
-          height: 200px;
-          border-radius: 50%;
-          border: 2px solid #fff;
-          box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.12);
-          transition: all linear 0.1s;
-          overflow: hidden;
-          opacity: 0;
-          visibility: hidden;
-        }
-        #heygen-streaming-embed.show {
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          border: none;
+          border-radius: 0;
+          box-shadow: none;
           opacity: 1;
           visibility: visible;
-        }
-        #heygen-streaming-embed.expand {
-          ${clientWidth<540?"height: 266px; width: 96%; left: 50%; transform: translateX(-50%);":"height: 366px; width: calc(366px * 16 / 9);"}
-          border: 0;
-          border-radius: 8px;
         }
         #heygen-streaming-container {
           width: 100%;
@@ -54,28 +49,13 @@
           border: 0;
         }
       `;
-      const iframe=document.createElement("iframe");
-      iframe.allowFullscreen=!1;
-      iframe.title="Streaming Embed";
-      iframe.role="dialog";
-      iframe.allow="microphone";
-      iframe.src=url;
 
-      let visible=!1, initial=!1;
-      window.addEventListener("message",(e=>{
-        if(e.origin===host && e.data && e.data.type==="streaming-embed"){
-          if(e.data.action==="init"){
-            initial=!0;
-            wrapDiv.classList.toggle("show", initial);
-          } else if(e.data.action==="show"){
-            visible=!0;
-            wrapDiv.classList.toggle("expand", visible);
-          } else if(e.data.action==="hide"){
-            visible=!1;
-            wrapDiv.classList.toggle("expand", visible);
-          }
-        }
-      }));
+      const iframe = document.createElement("iframe");
+      iframe.allowFullscreen = false;
+      iframe.title = "Streaming Embed";
+      iframe.role = "dialog";
+      iframe.allow = "microphone";
+      iframe.src = url;
 
       container.appendChild(iframe);
       wrapDiv.appendChild(stylesheet);
@@ -83,5 +63,6 @@
       document.body.appendChild(wrapDiv);
     }(globalThis);
   </script>
+
 </body>
 </html>
