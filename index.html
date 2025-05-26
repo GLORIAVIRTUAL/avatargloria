@@ -3,55 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Heygen Fullscreen Avatar</title>
+  <title>Avatar Heygen Responsivo</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      background-color: #000;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
     }
 
-    #heygen-streaming-embed {
-      z-index: 9999;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
-      opacity: 1;
-      visibility: visible;
-    }
-
-    #heygen-streaming-container {
-      width: 100%;
-      height: 100%;
+    .iframe-wrapper {
       position: relative;
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 9 / 16;
+      height: auto;
     }
 
-    #heygen-streaming-container iframe {
+    .iframe-wrapper iframe {
       width: 100%;
       height: 100%;
-      border: 0;
+      border: none;
       display: block;
+    }
+
+    /* Mobile: limitar altura a 90% */
+    @media (max-width: 768px) {
+      .iframe-wrapper {
+        height: 90vh;
+        width: auto;
+        aspect-ratio: auto;
+      }
+
+      .iframe-wrapper iframe {
+        height: 100%;
+        width: auto;
+        max-height: 90vh;
+        max-width: 100vw;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div id="heygen-streaming-embed">
-    <div id="heygen-streaming-container">
-      <iframe
-        allowfullscreen="false"
-        title="Streaming Embed"
-        role="dialog"
-        allow="microphone"
-        src="https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJLYXR5YV9Qcm9mZXNzaW9uYWxMb29rMl9w%0D%0AdWJsaWMiLCJwcmV2aWV3SW1nIjoiaHR0cHM6Ly9maWxlczIuaGV5Z2VuLmFpL2F2YXRhci92My9k%0D%0ANTJmZmExYjQ0N2Q0ZjJmOGViMTY5MTdlN2VjMjIyYV81NTg3MC9wcmV2aWV3X3RhbGtfMS53ZWJw%0D%0AIiwibmVlZFJlbW92ZUJhY2tncm91bmQiOnRydWUsImtub3dsZWRnZUJhc2VJZCI6IjUxMmQwMDAy%0D%0AN2Q0NzRiMmM5MjljMzhkYWFmZjZlYmZjIiwidXNlcm5hbWUiOiJiZjJkOWEyOTk2MzE0MGE5YWIx%0D%0ANmIzMDM2ODRhZWM2ZCJ9&inIFrame=1">
-      </iframe>
-    </div>
+  <div class="iframe-wrapper">
+    <iframe
+      allowfullscreen="false"
+      title="Streaming Embed"
+      role="dialog"
+      allow="microphone"
+      src="https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJLYXR5YV9Qcm9mZXNzaW9uYWxMb29rMl9w%0D%0AdWJsaWMiLCJwcmV2aWV3SW1nIjoiaHR0cHM6Ly9maWxlczIuaGV5Z2VuLmFpL2F2YXRhci92My9k%0D%0ANTJmZmExYjQ0N2Q0ZjJmOGViMTY5MTdlN2VjMjIyYV81NTg3MC9wcmV2aWV3X3RhbGtfMS53ZWJw%0D%0AIiwibmVlZFJlbW92ZUJhY2tncm91bmQiOnRydWUsImtub3dsZWRnZUJhc2VJZCI6IjUxMmQwMDAy%0D%0AN2Q0NzRiMmM5MjljMzhkYWFmZjZlYmZjIiwidXNlcm5hbWUiOiJiZjJkOWEyOTk2MzE0MGE5YWIx%0D%0ANmIzMDM2ODRhZWM2ZCJ9&inIFrame=1">
+    </iframe>
   </div>
 
 </body>
