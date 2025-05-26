@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Avatar Heygen no Topo Mobile</title>
+  <title>Avatar com Play Mobile</title>
   <style>
     html, body {
       margin: 0;
@@ -16,26 +16,52 @@
 
     .iframe-wrapper {
       width: 100vw;
-      height: 90vh;
-      max-height: 90vh;
+      height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* alinha no topo */
+      align-items: flex-start;
     }
 
-    .iframe-wrapper iframe {
+    iframe {
       width: 100%;
       height: 100%;
       border: none;
       display: block;
       object-fit: contain;
     }
+
+    #play-button {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    }
+
+    @media (max-width: 768px) {
+      #play-button {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
 
+  <!-- Botão Play centralizado -->
+  <button id="play-button">▶</button>
+
+  <!-- Iframe do Avatar Heygen -->
   <div class="iframe-wrapper">
-    <iframe
+    <iframe id="heygen-iframe"
       allowfullscreen="false"
       title="Streaming Embed"
       role="dialog"
@@ -43,6 +69,25 @@
       src="https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJLYXR5YV9Qcm9mZXNzaW9uYWxMb29rMl9w%0D%0AdWJsaWMiLCJwcmV2aWV3SW1nIjoiaHR0cHM6Ly9maWxlczIuaGV5Z2VuLmFpL2F2YXRhci92My9k%0D%0ANTJmZmExYjQ0N2Q0ZjJmOGViMTY5MTdlN2VjMjIyYV81NTg3MC9wcmV2aWV3X3RhbGtfMS53ZWJw%0D%0AIiwibmVlZFJlbW92ZUJhY2tncm91bmQiOnRydWUsImtub3dsZWRnZUJhc2VJZCI6IjUxMmQwMDAy%0D%0AN2Q0NzRiMmM5MjljMzhkYWFmZjZlYmZjIiwidXNlcm5hbWUiOiJiZjJkOWEyOTk2MzE0MGE5YWIx%0D%0ANmIzMDM2ODRhZWM2ZCJ9&inIFrame=1">
     </iframe>
   </div>
+
+  <script>
+    const playButton = document.getElementById("play-button");
+    const heygenIframe = document.getElementById("heygen-iframe");
+
+    playButton.addEventListener("click", () => {
+      // envia comando para o iframe abrir o chat
+      heygenIframe.contentWindow.postMessage(
+        {
+          type: "streaming-embed",
+          action: "show"
+        },
+        "https://labs.heygen.com"
+      );
+
+      // Esconde o botão
+      playButton.style.display = "none";
+    });
+  </script>
 
 </body>
 </html>
