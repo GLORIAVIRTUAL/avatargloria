@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Avatar Heygen - Ajuste Mobile</title>
+  <title>Avatar Glória Ajustado</title>
   <style>
     html, body {
       margin: 0;
@@ -12,6 +12,9 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .iframe-wrapper {
@@ -26,20 +29,20 @@
       display: block;
     }
 
-    /* ✅ Estilo específico para MOBILE */
+    /* 🔧 Ajuste para mobile */
     @media (max-width: 768px) {
-      .iframe-wrapper {
-        display: flex;
-        justify-content: center;
+      body {
         align-items: flex-start;
+      }
+
+      .iframe-wrapper {
         height: 90vh;
+        width: 360px; /* ou 320px para ainda menor */
       }
 
       iframe {
-        width: auto;
         height: 100%;
-        max-height: 90vh;
-        aspect-ratio: 9 / 16;
+        width: 100%;
       }
     }
   </style>
@@ -48,11 +51,10 @@
 
   <div class="iframe-wrapper">
     <iframe
-      id="heygen-iframe"
       src="https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJLYXR5YV9Qcm9mZXNzaW9uYWxMb29rMl9w%0D%0AdWJsaWMiLCJwcmV2aWV3SW1nIjoiaHR0cHM6Ly9maWxlczIuaGV5Z2VuLmFpL2F2YXRhci92My9k%0D%0ANTJmZmExYjQ0N2Q0ZjJmOGViMTY5MTdlN2VjMjIyYV81NTg3MC9wcmV2aWV3X3RhbGtfMS53ZWJw%0D%0AIiwibmVlZFJlbW92ZUJhY2tncm91bmQiOnRydWUsImtub3dsZWRnZUJhc2VJZCI6IjUxMmQwMDAy%0D%0AN2Q0NzRiMmM5MjljMzhkYWFmZjZlYmZjIiwidXNlcm5hbWUiOiJiZjJkOWEyOTk2MzE0MGE5YWIx%0D%0ANmIzMDM2ODRhZWM2ZCJ9&inIFrame=1"
       allow="microphone"
-      title="Glória IA"
       allowfullscreen="false"
+      title="Glória IA"
       role="dialog">
     </iframe>
   </div>
