@@ -3,34 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Avatar Glória | Ao vivo</title>
+  <title>Avatar Glória Responsivo</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      width: 100vw;
-      height: 100vh;
       background-color: #000;
-      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    iframe {
-      width: 100vw;
-      height: 100vh;
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      padding-top: 56.25%; /* Proporção 16:9 */
+      height: 0;
+    }
+
+    .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       border: none;
-      display: block;
+    }
+
+    /* Ajustes para dispositivos móveis */
+    @media (max-width: 768px) {
+      .iframe-container {
+        padding-top: 90vh; /* Limita a altura a 90% da altura da tela */
+      }
     }
   </style>
 </head>
 <body>
 
-  <iframe
-    src="https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJLYXR5YV9Qcm9mZXNzaW9uYWxMb29rMl9w%0D%0AdWJsaWMiLCJwcmV2aWV3SW1nIjoiaHR0cHM6Ly9maWxlczIuaGV5Z2VuLmFpL2F2YXRhci92My9k%0D%0ANTJmZmExYjQ0N2Q0ZjJmOGViMTY5MTdlN2VjMjIyYV81NTg3MC9wcmV2aWV3X3RhbGtfMS53ZWJw%0D%0AIiwibmVlZFJlbW92ZUJhY2tncm91bmQiOnRydWUsImtub3dsZWRnZUJhc2VJZCI6IjUxMmQwMDAy%0D%0AN2Q0NzRiMmM5MjljMzhkYWFmZjZlYmZjIiwidXNlcm5hbWUiOiJiZjJkOWEyOTk2MzE0MGE5YWIx%0D%0ANmIzMDM2ODRhZWM2ZCJ9&inIFrame=1"
-    allow="microphone"
-    title="Glória IA"
-    allowfullscreen="false"
-    role="dialog">
-  </iframe>
+  <div class="iframe-container">
+    <iframe
+      src="https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJLYXR5YV9Qcm9mZXNzaW9uYWxMb29rMl9w%0D%0AdWJsaWMiLCJwcmV2aWV3SW1nIjoiaHR0cHM6Ly9maWxlczIuaGV5Z2VuLmFpL2F2YXRhci92My9k%0D%0ANTJmZmExYjQ0N2Q0ZjJmOGViMTY5MTdlN2VjMjIyYV81NTg3MC9wcmV2aWV3X3RhbGtfMS53ZWJw%0D%0AIiwibmVlZFJlbW92ZUJhY2tncm91bmQiOnRydWUsImtub3dsZWRnZUJhc2VJZCI6IjUxMmQwMDAy%0D%0AN2Q0NzRiMmM5MjljMzhkYWFmZjZlYmZjIiwidXNlcm5hbWUiOiJiZjJkOWEyOTk2MzE0MGE5YWIx%0D%0ANmIzMDM2ODRhZWM2ZCJ9&inIFrame=1"
+      allow="microphone"
+      title="Glória IA"
+      allowfullscreen="false"
+      role="dialog">
+    </iframe>
+  </div>
 
 </body>
 </html>
